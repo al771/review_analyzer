@@ -21,9 +21,17 @@ class NinjaService:
             return self.normalize_response(data)
         return {"error": f"status {response.status_code}", "service": "ninja", "success": False}
 
+    def _normalize_sentiment(self, raw_sentiment):
+        sentiment = raw_sentiment.lower()
+        if "positive" in sentiment:
+            return "positive"
+        elif "negative" in sentiment:
+            return "negative"
+        else:
+            return "neutral"
     def normalize_response(self, data):
         return {"score": data["score"],
-                "sentiment": data["sentiment"].lower(),
+                "sentiment": self._normalize_sentiment(data["sentiment"]),
                 "service": "ninja",
                 "success": True
                 }
