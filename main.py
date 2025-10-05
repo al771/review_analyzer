@@ -1,4 +1,4 @@
-from services.gui import SentimentGUI
+from src.gui import SentimentGUI
 
 def main():
     app = SentimentGUI()

@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
-from services.ninja_service import NinjaService
-from services.twinword_service import TwinwordService
-from services.comparison_service import compare_results
+from src.ninja_service import NinjaService
+from src.twinword_service import TwinwordService
+from src.comparison_service import compare_results
 
 
 class SentimentGUI:

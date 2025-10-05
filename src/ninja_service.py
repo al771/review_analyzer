@@ -1,6 +1,6 @@
 from typing import Dict, Any
 import config
-from services.base_service import BaseService
+from src.base_service import BaseService
 class NinjaService(BaseService):
     # Сервис для анализа тональности через API Ninjas
 
