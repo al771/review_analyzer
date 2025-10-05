@@ -1,15 +1,13 @@
 from typing import Dict, Any
 import config
-
-class NinjaService():
-    """Сервис для анализа тональности через API Ninjas"""
+from services.base_service import BaseService
+class NinjaService(BaseService):
+    # Сервис для анализа тональности через API Ninjas
 
     def __init__(self) -> None:
         super().__init__("ninja", config.NINJA_URL, config.NINJA_HOST)
-
     def _get_api_key(self) -> str:
         return config.RAPIDAPI_KEY
-
     def analyze_sentiment(self, text: str) -> Dict[str, Any]:
         try:
             data: Dict[str, Any] = self._make_request(text)

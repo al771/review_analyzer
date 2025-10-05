@@ -1,19 +1,18 @@
 from typing import Dict, Any
 import config
+from services.base_service import BaseService
 
-class TwinwordService():
-    """Сервис для анализа тональности через Twinword API"""
-
+class TwinwordService(BaseService):
+    # Сервис для анализа тональности через Twinword API
     def __init__(self) -> None:
-        """Инициализация Twinword сервиса"""
         super().__init__("twinword", config.TWINWORD_URL, config.TWINWORD_HOST)
 
     def _get_api_key(self) -> str:
-        """Получает API ключ из конфигурации"""
+        # Получает ключ из конфига
         return config.RAPIDAPI_KEY
 
     def analyze_sentiment(self, text: str) -> Dict[str, Any]:
-        """Анализирует тональность через Twinword API"""
+        # Анализирует тональность
         try:
             data: Dict[str, Any] = self._make_request(text)
 
@@ -34,7 +33,7 @@ class TwinwordService():
             }
 
     def _normalize_response(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Нормализует ответ Twinword API"""
+        # Нормализует ответ
         return {
             "score": abs(float(data["score"])),
             "sentiment": data["type"],
