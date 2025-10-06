@@ -11,7 +11,7 @@ def compare_results(r1: Dict[str, Any], r2: Dict[str, Any]) -> Dict[str, Any]:
         "agreement": agreement,
         "conclusion_text": conclusion_text,
         "final_sentiment": final_sentiment,
-        "better_service": better.get("service", "неизвестный"),
+        "better_service": better.get("service", "unknow"),
     }
 
 def _choose_better_result(a: Dict[str, Any], b: Dict[str, Any]) -> Dict[str, Any]:
@@ -22,7 +22,7 @@ def _choose_better_result(a: Dict[str, Any], b: Dict[str, Any]) -> Dict[str, Any
         return b
     if a["success"] and b["success"]:
         return a if a["score"] >= b["score"] else b
-    # оба неуспешны, вернём заглушку того же формата
+    # если оба неуспешны
     return {"sentiment": "unknown", "service": "none", "success": False, "score": 0.0}
 
 def _format_conclusion(agreement: bool, better: Dict[str, Any]) -> str:

@@ -11,16 +11,13 @@ class BaseService(ABC):
         self.api_key: str = self._get_api_key()
     @abstractmethod
     def _get_api_key(self) -> str:
-        # Получает API ключ из конфига
         pass
 
     @abstractmethod
     def analyze_sentiment(self, text: str) -> Dict[str, Any]:
-        # Анализирует тональность
         pass
     @abstractmethod
     def _normalize_response(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        # Нормализует ответ к стандартному формату
         pass
     def _make_request(self, text: str) -> Dict[str, Any]:
         # Выполняет запрос
